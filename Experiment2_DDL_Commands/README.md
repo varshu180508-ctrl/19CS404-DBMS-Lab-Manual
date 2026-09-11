@@ -104,124 +104,264 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+
+Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
+| EmployeeID | Name        | Department  | Salary |
+|------------|-------------|-------------|--------|
+| 201        | John Doe    | HR          | 50000  |
+| 202        | Jane Smith  | Engineering | 75000  |
+| 203        | Emily Davis | Marketing   | 60000  |
 
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Employee SELECT * FROM Former_employees;
+
+
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1232" height="427" alt="image" src="https://github.com/user-attachments/assets/c46b4623-5fe4-4364-91ce-5af0deba63f8" />
+
 
 **Question 2**
----
--- Paste Question 2 here
+ Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+For example:
+Table attributes are Name, Category, Price, Stock
+
+| Name | Category | Price | Stock |
+|------|----------|------:|------:|
+| Smartphone | Electronics | 800 | 150 |
+| Headphones | Accessories | 200 | 300 |
+
+
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Products (Name,Category,Price,Stock) VALUES('Smartphone','Electronics',800,150);
+INSERT INTO Products (Name,Category,Price,Stock) VALUES('Headphones','Accessories',200,300);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1228" height="456" alt="image" src="https://github.com/user-attachments/assets/9c513be2-3ea3-437e-898a-0db07ca491cd" />
+
 
 **Question 3**
----
--- Paste Question 3 here
+Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
+
+Sample table: customer
+Table attributes are customer_id, cust_name, city, grade, salesman_id, birth_date
+
+| customer_id | cust_name | city | grade | salesman_id | birth_date |
+|-------------|-----------|------|-------|-------------|------------|
+| 101 | John | Chennai | 100 | 5001 | 1995-06-15 |
+| 102 | Priya | Bangalore | 200 | 5002 | 1998-02-20 |
+| 103 | Rahul | Hyderabad | 300 | 5003 | 1996-09-10 |
+ 
+ 
+
 
 ```sql
--- Paste your SQL code below for Question 3
+ALTER TABLE customer
+ADD birth_date timestamp;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1206" height="455" alt="image" src="https://github.com/user-attachments/assets/5a7dfc56-a880-43a3-91c2-11004ca18233" />
+
 
 **Question 4**
----
--- Paste Question 4 here
 
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
+For example:
+
+Table attributes are job_id, job_title, min_salary, max_salary
+
+| job_id | job_title | min_salary | max_salary |
+|--------|-----------|-----------:|-----------:|
+| 1 | Software Engineer | 9000 | 15000 |
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE jobs(
+job_id INT PRIMARY KEY,
+job_title VARCHAR(50) DEFAULT ' ',
+min_salary INT DEFAULT 8000,
+max_salary INT DEFAULT NULL
+);
+
+
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1230" height="420" alt="image" src="https://github.com/user-attachments/assets/89e4dec8-30c5-4ac6-a8a2-538c3ea32adf" />
+
 
 **Question 5**
----
--- Paste Question 5 here
+
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
+For example:
+
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE ProjectAssignments(
+AssignmentID INTEGER PRIMARY KEY,
+EmployeeID INTEGER REFERENCES EmployeeS(EmployeeID),
+ProjectID INTEGER REFERENCES Projects(ProjectID),
+AssignmentDate DATE NOT NULL
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1212" height="365" alt="image" src="https://github.com/user-attachments/assets/fc90e22d-4955-4e6c-993f-d3a32685a438" />
+
 
 **Question 6**
----
--- Paste Question 6 here
+
+ Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
+
+Table attributes are CustomerID, Name, Address
+
+| CustomerID | Name | Address |
+|------------|------|---------|
+| 304 | Peter Parker | Spider St |
+ 
+
+
 
 ```sql
--- Paste your SQL code below for Question 6
+INSERT INTO Customers (CustomerID,Name,Address)
+VALUES(304,'Peter Parker','Spider St');
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1207" height="392" alt="image" src="https://github.com/user-attachments/assets/78ba53f1-5cf1-4110-9265-dfe713c09092" />
+
 
 **Question 7**
----
--- Paste Question 7 here
 
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
+
+Table attributes are item_id, item_desc, rate, icom_id
+
+| item_id | item_desc | rate | icom_id |
+|---------|-----------|-----:|---------|
+| ITM5 | Charlie Gold | 700 | COM5 |
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT CHECK (length(icom_id)=4),
+FOREIGN  KEY (icom_id) REFERENCES company(com_id) ON UPDATE SET NULL ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1211" height="452" alt="image" src="https://github.com/user-attachments/assets/0dda1f36-c5d1-4676-929a-4d2cdbcf28a4" />
+
 
 **Question 8**
----
--- Paste Question 8 here
+
+Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
+For example:
+
+
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Invoices(
+InvoiceID INTEGER PRIMARY KEY ,
+InvoiceDate DATE,
+DueDate DATE CHECK (DueDate > InvoiceDate),
+Amount REAL CHECK (Amount >0)
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1232" height="362" alt="image" src="https://github.com/user-attachments/assets/5a37b896-e997-406d-aede-ab1f78989fc0" />
+
 
 **Question 9**
----
--- Paste Question 9 here
+
+Create a table named Reviews with the following columns:
+
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
+For example:
+
+Table attributes are ReviewID, ProductID, Rating, ReviewText
+
+| ReviewID | ProductID | Rating | ReviewText |
+|----------|-----------|-------:|------------|
+| 1 | 101 | 4.5 | Excellent product |
+| 2 | 102 | 3.8 | Good quality |
+| 3 | 103 | 5.0 | Highly recommended |
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT 
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1226" height="473" alt="image" src="https://github.com/user-attachments/assets/96619e59-139c-42b4-b999-8603a266eeb4" />
+
 
 **Question 10**
----
--- Paste Question 10 here
+
+ Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
+
+For example:
+Table attributes are id, salary, designation
+
+| id | salary | designation |
+|----|-------:|-------------|
+| 101 | 50000 | Manager |
+| 102 | 35000 | Developer |
+| 103 | 25000 | Tester |
+
 
 ```sql
--- Paste your SQL code below for Question 10
+ALTER TABLE employee ADD designation varchar(50);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1205" height="372" alt="image" src="https://github.com/user-attachments/assets/db5332e1-8cbc-45de-be55-655b2125eb7d" />
+
 
 
 ## RESULT
