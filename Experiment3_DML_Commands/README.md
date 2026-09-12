@@ -38,7 +38,16 @@ Sample table:Insurance Table
 select InsuranceCompany,COUNT(InsuranceID) AS TotalExpiredPatients FROM Insurance GROUP BY(InsuranceCompany); 
 Output:
 
+
+
 image
+
+
+
+
+
+
+
 Question 2
 -- What is the most common diagnosis among patients?
 
@@ -47,7 +56,13 @@ Sample table:MedicalRecords Table
 SELECT Diagnosis,COUNT(*) AS DiagnosisCount FROM MedicalRecords GROUP BY Diagnosis ORDER BY DiagnosisCount DESC limit 1;
 Output:
 
+
+
 image
+
+
+
+
 Question 3
 -- How many appointments are scheduled for each doctor?
 
@@ -56,7 +71,14 @@ Sample table:Appointments Table
 SELECT DoctorID,COUNT(AppointmentID) AS TotalAppointments FROM Appointments GROUP BY DoctorID;
 Output:
 
+
+
 image
+
+
+
+
+
 Question 4
 -- ## Count Customers Who Received a Grade
 
@@ -72,7 +94,14 @@ SQL Query
 select count(*) as COUNT from customer where grade>=1;
 Output:
 
+
+
+
 image
+
+
+
+
 Question 5
 -- Write a SQL query to return the total number of rows in the 'customer' table where the city is Noida.
 
@@ -81,7 +110,15 @@ Sample table: customer
 -- SELECT COUNT(*) AS COUNT FROM customer WHERE city='Noida';
 Output:
 
+
+
+
 image
+
+
+
+
+
 Question 6
 --## Total Amount of Fruits with Unit Type 'LB'
 
@@ -98,7 +135,15 @@ id	name	unit	inventory	price
 select SUM(inventory) as total from fruits where unit='LB';
 Output:
 
+
+
+
 image
+
+
+
+
+
 Question 7
 -- Write a SQL query to return the total number of rows in the 'customer' table where the city is not Noida.
 
@@ -107,7 +152,16 @@ Sample table: customer
 SELECT COUNT(*) as COUNT from customer where city<> 'Noida';
 Output:
 
+
+
+
+
 image
+
+
+
+
+
 Question 8
 -- Write an SQL query that groups the customer data into 5-year age intervals, calculates the minimum salary for each group, and excludes groups where the minimum salary is not less than 2000.
 
@@ -116,7 +170,21 @@ Table: customer1
 -- SELECT (age/5)*5  age_group,MIN(salary) FROM customer1 group by age_group HAVING MIN(salary)<2000;
 Output:
 
+
+
+
+
 image
+
+
+
+
+
+
+
+
+
+
 Question 9
 -- Write the SQL query that achieves the grouping of data by age intervals using the expression (age/5)5, calculates the average age for each group, and excludes groups where the average age is not less than 24.
 
@@ -125,7 +193,19 @@ Sample table: customer1
 -- SELECT (age/5)*5 as  age_group,AVG(age) FROM customer1 group by age_group HAVING AVG(age)<24;
 Output:
 
+
+
+
+
 image
+
+
+
+
+
+
+
+
 Question 10
 -- Write the SQL query that achieves the grouping of data by age intervals using the expression (age/5)5, calculates the total salary sum for each group, and excludes groups where the total salary sum is not greater than 5000.
 
@@ -134,6 +214,17 @@ Sample table: customer1
 -- SELECT (age/5)*5  age_group,SUM(salary) FROM customer1 group by age_group HAVING SUM(salary)>5000;
 Output:
 
+
+
+
+
 image
+
+
+
+
+
+
+
 RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
